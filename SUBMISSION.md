@@ -1,6 +1,6 @@
 # Submission contents
 
-Live product: https://maksimaleksandrov.vercel.app  
+Live product: https://maksimaleksandrov.vercel.app/  
 Source: https://github.com/maksim92982/Ajaia.git
 
 This Drive folder should contain:
@@ -11,7 +11,7 @@ This Drive folder should contain:
 4. `AI_WORKFLOW.md` — AI usage
 5. `SUBMISSION.md` — this file
 6. Live product URL (above)
-7. `WALKTHROUGH.txt` — walkthrough video URL
+7. `WALKTHROUGH.txt` — https://www.youtube.com/watch?v=Q0hyxoMRua8
 8. `public/sample-import.md` — sample file for import
 
 ## Demo credentials

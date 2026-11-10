@@ -23,5 +23,10 @@
 
 - `npm test` for access + import
 - `npm run build` for typecheck/compile
-- Manual flow locally: login as Maksim, create, format, refresh, import `public/sample-import.md`, share with reviewer, login as reviewer, confirm Shared list and edit
-- Walkthrough video (see `WALKTHROUGH.txt`) covers the same path
+- Manual flow locally, then on Vercel: login as Maksim, create, format, refresh, import, share with reviewer, login as reviewer
+- Walkthrough: https://www.youtube.com/watch?v=Q0hyxoMRua8
+
+## Production issues I fixed instead of ignoring
+
+- First Vercel deploy returned 500 on `/api/me`: native `@libsql/client` is wrong on serverless. Switched remote Turso to `@libsql/client/web`.
+- Share looked “broken” because the 400 error rendered behind the modal. Errors now show inside the dialog; TipTap had a duplicate `underline` extension.

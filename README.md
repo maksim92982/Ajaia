@@ -1,25 +1,33 @@
 # Ajaia Docs
 
-Take-home assignment for **Ajaia LLC**: a small Google Docs–inspired editor. Not a clone. A usable slice: create, rename, rich-text edit, autosave, import a file, share with another seeded user.
+Take-home for **Ajaia LLC**: a small Google Docs–inspired editor. Not a clone. Create, rename, rich-text edit, autosave, import a file, share with a seeded teammate.
 
-Live URL: https://maksimaleksandrov.vercel.app
+**Live demo:** [https://maksimaleksandrov.vercel.app/](https://maksimaleksandrov.vercel.app/)  
+**Source:** [https://github.com/maksim92982/Ajaia](https://github.com/maksim92982/Ajaia)  
+**Walkthrough:** [https://www.youtube.com/watch?v=Q0hyxoMRua8](https://www.youtube.com/watch?v=Q0hyxoMRua8)
 
 ## Reviewer accounts
 
-| Email | Password | Role |
-| --- | --- | --- |
-| `maksim@ajaia.test` | `ajaia-demo` | Owner of the seeded welcome document |
-| `reviewer@ajaia.test` | `ajaia-demo` | Already has that document under **Shared with you** |
+Password for both: `ajaia-demo`
 
-Sharing is by existing account email only (no public links, no invite emails).
+| Email | Role |
+| --- | --- |
+| `maksim@ajaia.test` | Owner of the seeded welcome document |
+| `reviewer@ajaia.test` | Sees that document under **Shared with you** |
+
+Sharing is by existing account email only. Do not use a personal inbox.
+
+Quick share check: sign in as Maksim → open a document → Share → add `reviewer@ajaia.test` → sign out → sign in as Reviewer.
 
 ## Supported file import
 
-`.txt`, `.md`, `.docx` → a **new** editable document. Max 2 MB. Shown on the home screen.
+`.txt`, `.md`, `.docx` become a **new** editable document. Max 2 MB. The home screen states the same limit.
+
+A sample file is in `public/sample-import.md`.
 
 ## Local setup
 
-Requires Node 20+.
+Node 20+.
 
 ```bash
 git clone https://github.com/maksim92982/Ajaia.git
@@ -38,12 +46,10 @@ npm run build
 
 ## Deploy on Vercel
 
-1. Import this GitHub repo.
+1. Import this GitHub repo (root directory = repository root).
 2. Set `AUTH_SECRET` to a long random string.
-3. For data that survives serverless instances, create a free [Turso](https://turso.tech) database and set `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN`.
-4. Without Turso, the app still boots (SQLite in `/tmp`) but documents can reset between instances. Do not use that mode for review.
-
-Root directory on Vercel: repository root.
+3. Create a free [Turso](https://turso.tech) database and set `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN`.
+4. Without Turso, serverless instances can lose data. The live demo uses Turso Starter (free).
 
 ## What works
 
@@ -56,6 +62,6 @@ Root directory on Vercel: repository root.
 
 ## Intentionally not built
 
-Realtime cursors, comments, version history, PDF export, Google-style ACL, self-registration, mobile-native polish.
+Realtime cursors, comments, version history, PDF export, Google-style ACL, self-registration.
 
 With another 2–4 hours: live presence, Markdown export, and editor vs viewer share roles.

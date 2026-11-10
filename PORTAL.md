@@ -1,6 +1,6 @@
 # Portal paste (under 1000 lines)
 
-Live product: https://maksimaleksandrov.vercel.app
+Live product: https://maksimaleksandrov.vercel.app/
 
 Demo accounts (password for both: `ajaia-demo`):
 - maksim@ajaia.test — owner
@@ -10,7 +10,7 @@ GitHub: https://github.com/maksim92982/Ajaia.git
 
 Google Drive folder: PASTE_DRIVE_LINK_HERE
 
-Walkthrough video: PASTE_VIDEO_LINK_HERE
+Walkthrough video: https://www.youtube.com/watch?v=Q0hyxoMRua8
 
 ## What works
 
