@@ -7,6 +7,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Link from "next/link";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { apiFetch, readJson } from "@/lib/api";
+import { htmlToMarkdown, markdownFilename } from "@/lib/html-to-markdown";
 
 type SharePerson = { userId: string; email: string; name: string };
 type Payload = {
@@ -138,6 +139,20 @@ export function DocEditor({ id }: { id: string }) {
     window.location.href = "/";
   }
 
+  function exportMarkdown() {
+    const html = editor?.getHTML() || htmlRef.current;
+    const markdown = htmlToMarkdown(html);
+    const blob = new Blob([markdown], { type: "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = markdownFilename(titleRef.current || title);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }
+
   if (error && !payload) {
     return (
       <main className="mx-auto max-w-2xl px-6 py-16">
@@ -199,6 +214,14 @@ export function DocEditor({ id }: { id: string }) {
           />
           <Tool action={() => editor.chain().focus().toggleBulletList().run()} active={editor.isActive("bulletList")} label="•" title="Bulleted list" />
           <Tool action={() => editor.chain().focus().toggleOrderedList().run()} active={editor.isActive("orderedList")} label="1." title="Numbered list" />
+          <button
+            type="button"
+            className="ml-2 rounded-lg border border-[var(--line)] px-2.5 py-1 text-xs"
+            title="Download as Markdown"
+            onClick={exportMarkdown}
+          >
+            Export .md
+          </button>
         </div>
       </header>
 

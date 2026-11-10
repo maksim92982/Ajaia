@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "tsx --test src/lib/access.test.ts src/lib/import-file.test.ts"
+    "test": "tsx --test src/lib/access.test.ts src/lib/import-file.test.ts src/lib/html-to-markdown.test.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",

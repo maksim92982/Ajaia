@@ -54,6 +54,7 @@ npm run build
 ## What works
 
 - Create / rename / rich text (bold, italic, underline, H1/H2, bullets, numbers)
+- Export the open document as Markdown (toolbar, client-side download)
 - Autosave and reopen after refresh
 - Import `.txt` / `.md` / `.docx`
 - Owner vs shared lists, grant/revoke access by email
