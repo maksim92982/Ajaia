@@ -207,8 +207,8 @@ export function DocEditor({ id }: { id: string }) {
       </div>
 
       {shareOpen ? (
-        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/30 p-4" onClick={() => setShareOpen(false)}>
-          <div className="w-full max-w-md rounded-2xl bg-[var(--white)] p-5 shadow-lg" onClick={(event) => event.stopPropagation()}>
+        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/30 p-4">
+          <div className="w-full max-w-md rounded-2xl bg-[var(--white)] p-5 shadow-lg">
             <h2 className="text-lg font-semibold">Share this document</h2>
             <p className="mt-1 text-sm text-[var(--muted)]">
               Grants edit access. Try <code>reviewer@ajaia.test</code>, then sign in as that user.
