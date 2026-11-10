@@ -1,7 +1,9 @@
 # Submission contents
 
 Live product: https://maksimaleksandrov.vercel.app/  
-Source: https://github.com/maksim92982/Ajaia.git
+Source: https://github.com/maksim92982/Ajaia.git  
+Google Drive: https://drive.google.com/drive/folders/1qIUmW40-zSetGYHavmR8ipJJrJBkB8Ni?usp=sharing  
+Walkthrough: https://www.youtube.com/watch?v=Q0hyxoMRua8
 
 This Drive folder should contain:
 

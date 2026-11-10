@@ -8,7 +8,7 @@ Demo accounts (password for both: `ajaia-demo`):
 
 GitHub: https://github.com/maksim92982/Ajaia.git
 
-Google Drive folder: PASTE_DRIVE_LINK_HERE
+Google Drive folder: https://drive.google.com/drive/folders/1qIUmW40-zSetGYHavmR8ipJJrJBkB8Ni?usp=sharing
 
 Walkthrough video: https://www.youtube.com/watch?v=Q0hyxoMRua8
 
