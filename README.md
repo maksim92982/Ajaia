@@ -2,7 +2,7 @@
 
 Take-home assignment for **Ajaia LLC**: a small Google Docs–inspired editor. Not a clone. A usable slice: create, rename, rich-text edit, autosave, import a file, share with another seeded user.
 
-Live URL: paste your Vercel URL here after deploy.
+Live URL: https://maksimaleksandrov.vercel.app
 
 ## Reviewer accounts
 
@@ -22,7 +22,8 @@ Sharing is by existing account email only (no public links, no invite emails).
 Requires Node 20+.
 
 ```bash
-cd ajaia
+git clone https://github.com/maksim92982/Ajaia.git
+cd Ajaia
 npm install
 cp .env.example .env.local
 npm run dev
@@ -42,7 +43,7 @@ npm run build
 3. For data that survives serverless instances, create a free [Turso](https://turso.tech) database and set `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN`.
 4. Without Turso, the app still boots (SQLite in `/tmp`) but documents can reset between instances. Do not use that mode for review.
 
-Root directory on Vercel: `ajaia` if this folder sits inside a parent repo; otherwise leave default.
+Root directory on Vercel: repository root.
 
 ## What works
 
