@@ -4,7 +4,7 @@
 
 The assignment is a 4–6 hour slice, not Google Docs. I prioritized one coherent loop: **sign in → own vs shared lists → edit with formatting → persist HTML → share by email → import a file into a new doc**.
 
-I skipped realtime collaboration, comments, history, and public links. Those are expensive and easy to fake poorly. Sharing with two seeded accounts is enough to demonstrate access logic.
+I skipped realtime collaboration, comments, history, and public links. Those are expensive and easy to fake poorly. Sharing with two seeded accounts is enough to demonstrate access logic. After the core shipped, I added one stretch: client-side **Export to Markdown** from the editor toolbar.
 
 ## Stack
 

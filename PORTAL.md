@@ -14,7 +14,7 @@ Walkthrough video: https://www.youtube.com/watch?v=Q0hyxoMRua8
 
 ## What works
 
-Lightweight Docs slice: sign in with seeded users, create/rename documents, TipTap rich text (bold, italic, underline, H1/H2, bullets, numbers), debounce autosave to Turso, reopen after refresh. Import `.txt` / `.md` / `.docx` (max 2 MB) as a new document. Owner can share by existing-account email; home page splits Owned vs Shared. Reviewer can edit, cannot share or delete.
+Lightweight Docs slice: sign in with seeded users, create/rename documents, TipTap rich text (bold, italic, underline, H1/H2, bullets, numbers), debounce autosave to Turso, reopen after refresh. Import `.txt` / `.md` / `.docx` (max 2 MB) as a new document. Export the open document as Markdown from the editor toolbar (client-side). Owner can share by existing-account email; home page splits Owned vs Shared. Reviewer can edit, cannot share or delete.
 
 ## How to review sharing in 2 minutes
 

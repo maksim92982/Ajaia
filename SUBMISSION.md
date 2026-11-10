@@ -25,7 +25,7 @@ Sharing only works between these two accounts. Do not use a personal email.
 
 ## Working
 
-Create / rename / rich-text edit (bold, italic, underline, H1/H2, lists), autosave, reopen after refresh, import `.txt` / `.md` / `.docx` (max 2 MB) into a new document, owner vs shared lists, grant/revoke access by email, Turso persistence on Vercel, access + import tests.
+Create / rename / rich-text edit (bold, italic, underline, H1/H2, lists), autosave, reopen after refresh, import `.txt` / `.md` / `.docx` (max 2 MB) into a new document, export open document as Markdown from the toolbar, owner vs shared lists, grant/revoke access by email, Turso persistence on Vercel, access + import + markdown-export tests.
 
 ## Incomplete / next 2–4 hours
 
