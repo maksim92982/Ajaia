@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ajaia Docs
 
-## Getting Started
+Take-home assignment for **Ajaia LLC**: a small Google Docs–inspired editor. Not a clone. A usable slice: create, rename, rich-text edit, autosave, import a file, share with another seeded user.
 
-First, run the development server:
+Live URL: paste your Vercel URL here after deploy.
+
+## Reviewer accounts
+
+| Email | Password | Role |
+| --- | --- | --- |
+| `maksim@ajaia.test` | `ajaia-demo` | Owner of the seeded welcome document |
+| `reviewer@ajaia.test` | `ajaia-demo` | Already has that document under **Shared with you** |
+
+Sharing is by existing account email only (no public links, no invite emails).
+
+## Supported file import
+
+`.txt`, `.md`, `.docx` → a **new** editable document. Max 2 MB. Shown on the home screen.
+
+## Local setup
+
+Requires Node 20+.
 
 ```bash
+cd ajaia
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). SQLite is created at `data/ajaia.db`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm test
+npm run build
+```
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Import this GitHub repo.
+2. Set `AUTH_SECRET` to a long random string.
+3. For data that survives serverless instances, create a free [Turso](https://turso.tech) database and set `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN`.
+4. Without Turso, the app still boots (SQLite in `/tmp`) but documents can reset between instances. Do not use that mode for review.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Root directory on Vercel: `ajaia` if this folder sits inside a parent repo; otherwise leave default.
+
+## What works
+
+- Create / rename / rich text (bold, italic, underline, H1/H2, bullets, numbers)
+- Autosave and reopen after refresh
+- Import `.txt` / `.md` / `.docx`
+- Owner vs shared lists, grant/revoke access by email
+- Seeded users, cookie session
+- Access-control unit tests + import tests
+
+## Intentionally not built
+
+Realtime cursors, comments, version history, PDF export, Google-style ACL, self-registration, mobile-native polish.
+
+With another 2–4 hours: live presence, Markdown export, and editor vs viewer share roles.
