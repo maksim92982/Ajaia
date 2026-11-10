@@ -5,3 +5,7 @@ export async function readJson<T>(response: Response): Promise<T> {
   }
   return data;
 }
+
+export function apiFetch(input: string, init: RequestInit = {}): Promise<Response> {
+  return fetch(input, { cache: "no-store", credentials: "same-origin", ...init });
+}

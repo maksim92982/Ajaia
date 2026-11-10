@@ -6,7 +6,7 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "next/link";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
-import { readJson } from "@/lib/api";
+import { apiFetch, readJson } from "@/lib/api";
 
 type SharePerson = { userId: string; email: string; name: string };
 type Payload = {
@@ -32,7 +32,7 @@ export function DocEditor({ id }: { id: string }) {
       setStatus("Saving…");
       try {
         await readJson(
-          await fetch(`/api/docs/${id}`, {
+          await apiFetch(`/api/docs/${id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title: nextTitle, contentHtml: nextHtml }),
@@ -61,7 +61,7 @@ export function DocEditor({ id }: { id: string }) {
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
-      StarterKit.configure({ heading: { levels: [1, 2] } }),
+      StarterKit.configure({ heading: { levels: [1, 2] }, underline: false }),
       Underline,
       Placeholder.configure({ placeholder: "Start writing…" }),
     ],
@@ -78,7 +78,7 @@ export function DocEditor({ id }: { id: string }) {
     let cancelled = false;
     async function load() {
       try {
-        const data = await readJson<Payload>(await fetch(`/api/docs/${id}`));
+        const data = await readJson<Payload>(await apiFetch(`/api/docs/${id}`));
         if (cancelled) return;
         setPayload(data);
         setTitle(data.document.title);
@@ -105,12 +105,13 @@ export function DocEditor({ id }: { id: string }) {
 
   async function share(event: FormEvent) {
     event.preventDefault();
+    const email = shareEmail.trim().toLowerCase();
     try {
       const result = await readJson<{ shares: SharePerson[] }>(
-        await fetch(`/api/docs/${id}/share`, {
+        await apiFetch(`/api/docs/${id}/share`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: shareEmail }),
+          body: JSON.stringify({ email }),
         }),
       );
       setShares(result.shares);
@@ -122,7 +123,7 @@ export function DocEditor({ id }: { id: string }) {
 
   async function unshare(userId: string) {
     const result = await readJson<{ shares: SharePerson[] }>(
-      await fetch(`/api/docs/${id}/share`, {
+      await apiFetch(`/api/docs/${id}/share`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId }),
@@ -133,7 +134,7 @@ export function DocEditor({ id }: { id: string }) {
 
   async function remove() {
     if (!window.confirm("Delete this document?")) return;
-    await readJson(await fetch(`/api/docs/${id}`, { method: "DELETE" }));
+    await readJson(await apiFetch(`/api/docs/${id}`, { method: "DELETE" }));
     window.location.href = "/";
   }
 
@@ -215,13 +216,17 @@ export function DocEditor({ id }: { id: string }) {
             </p>
             <form onSubmit={share} className="mt-4 flex gap-2">
               <input
+                name="email"
                 className="flex-1 rounded-lg border border-[var(--line)] px-3 py-2 text-sm"
                 value={shareEmail}
                 onChange={(event) => setShareEmail(event.target.value)}
-                placeholder="email"
+                placeholder="reviewer@ajaia.test"
               />
-              <button className="rounded-lg bg-[var(--accent)] px-3 py-2 text-sm text-white">Add</button>
+              <button type="submit" className="rounded-lg bg-[var(--accent)] px-3 py-2 text-sm text-white">
+                Add
+              </button>
             </form>
+            {error ? <p className="mt-3 text-sm text-[#9b2c2c]">{error}</p> : null}
             <ul className="mt-4 space-y-2">
               {shares.length === 0 ? <li className="text-sm text-[var(--muted)]">Not shared yet.</li> : null}
               {shares.map((person) => (

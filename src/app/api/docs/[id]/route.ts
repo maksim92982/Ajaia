@@ -7,6 +7,8 @@ import { accessFor, shareList } from "@/lib/docs";
 import { documents } from "@/lib/schema";
 import { seedIfNeeded } from "@/lib/seed";
 
+export const dynamic = "force-dynamic";
+
 type Params = { params: Promise<{ id: string }> };
 
 export async function GET(_: Request, { params }: Params) {
@@ -19,7 +21,10 @@ export async function GET(_: Request, { params }: Params) {
     return NextResponse.json({ error: "Document not found." }, { status: 404 });
   }
   const people = await shareList(id);
-  return NextResponse.json({ document, role, shares: people });
+  return NextResponse.json(
+    { document, role, shares: people },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }
 
 export async function PATCH(request: Request, { params }: Params) {
